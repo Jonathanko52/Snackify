@@ -99,7 +99,7 @@ pool.connect((err, result) => {
 
 		db.query(`SELECT "userName" FROM snackify WHERE snackphoto IS NOT NULL;
 				  SELECT snackphoto FROM snackify;
-				  SELECT votes FROM snackify WHERE snackphoto IS NO; NULL;
+				  SELECT votes FROM snackify WHERE snackphoto IS NOT NULL;
 				  SELECT comments FROM snackify WHERE snackphoto IS NOT NULL;
 				  `,(err,result)=>{
 			if(err){
