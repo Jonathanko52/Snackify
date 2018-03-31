@@ -101,8 +101,7 @@ pool.connect((err, result) => {
 				  SELECT snackphoto FROM snackify;
 				  SELECT votes FROM snackify WHERE snackphoto IS NO; NULL;
 				  SELECT comments FROM snackify WHERE snackphoto IS NOT NULL;
-				  `
-		,(err,result)=>{
+				  `,(err,result)=>{
 			if(err){
 				throw new Error(err)
 			}
@@ -133,5 +132,4 @@ pool.connect((err, result) => {
 })
 
 
-UPDATE snackify SET submissionCount = submissionCount -1 WHERE "userName" = 'josephwu1994';UPDATE snackify SET snackphoto = 'test' WHERE "userName" = 'josephwu1994';UPDATE snackify SET comments = 'testestt' WHERE "userName" = 'josephwu1994';
 
