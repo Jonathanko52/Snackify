@@ -86,29 +86,23 @@ pool.connect((err, result) => {
 	app.post('/submission',(req,res)=>{
 		db.query(`UPDATE snackify SET submissionCount = submissionCount -1 WHERE '${req.user.userName}';
 				  UPDATE snackify SET snackphoto = '${req.user.snackphoto} WHERE '${req.user.userName}';
-				  UPDATE snackify SET comments = '${req.user.comments}' WHERE '${req.user.userName}'`, 
+				  UPDATE snackify SET comments = '${req.user.comments}' WHERE '${req.user.userName}';`, 
 		(err,result)=>{
 			if(err){
 				throw new Error(err)
 			}
 		});
-		// db.query(`UPDATE snackify SET snackphoto = '${req.user.snackphoto} WHERE '${req.user.userName}';`, (err,result)=>{
-		// 	if(err){
-		// 		throw new Error(err)
-		// 	}
-		// });	
-		// db.query(`UPDATE snackify SET comments = '${req.user.comments}' WHERE '${req.user.userName}';`, (err,result)=>{
-		// 	if(err){
-		// 		throw new Error(err)
-		// 	}
-		// });
+
 	});
 
 	app.post('Populating Front End with stuff',(req,res)=>{
-		db.query(`UPDATE snackify SET submissionCount = submissionCount -1 WHERE '${req.user.userName}';
-				  UPDATE snackify SET snackphoto = '${req.user.snackphoto} WHERE '${req.user.userName}';
-				  UPDATE snackify SET comments = '${req.user.comments}' WHERE '${req.user.userName}'`, 
-		(err,result)=>{
+
+		db.query(`SELECT "userName" FROM snackify WHERE snackphoto IS NOT NULL;
+				  SELECT snackphoto FROM snackify;
+				  SELECT votes FROM snackify WHERE snackphoto IS NO; NULL;
+				  SELECT comments FROM snackify WHERE snackphoto IS NOT NULL;
+				  `
+		,(err,result)=>{
 			if(err){
 				throw new Error(err)
 			}
@@ -116,11 +110,6 @@ pool.connect((err, result) => {
 
 
 	}) 
-
-
-	app.listen(3000, () => {
-		console.log('listening on port 3000...');
-	});
 
 	// app.post('/submission',(req,res)=> {
 	// 	db.query(`UPDATE snackify SET votecount = votecount - 1 WHERE '${req.user.userName}';`, (err, result) => {
@@ -135,7 +124,14 @@ pool.connect((err, result) => {
 	// 	});
 	// });
 
+	app.listen(3000, () => {
+		console.log('listening on port 3000...');
+	});
+
+	
+
 })
 
 
+UPDATE snackify SET submissionCount = submissionCount -1 WHERE "userName" = 'josephwu1994';UPDATE snackify SET snackphoto = 'test' WHERE "userName" = 'josephwu1994';UPDATE snackify SET comments = 'testestt' WHERE "userName" = 'josephwu1994';
 
